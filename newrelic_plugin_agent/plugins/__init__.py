@@ -19,5 +19,6 @@ available = {
     'postgresql': 'newrelic_plugin_agent.plugins.postgresql.PostgreSQL',
     'rabbitmq': 'newrelic_plugin_agent.plugins.rabbitmq.RabbitMQ',
     'redis': 'newrelic_plugin_agent.plugins.redis.Redis',
+    'rethinkdb': 'newrelic_plugin_agent.plugins.rethinkdb.RethinkDB',
     'riak': 'newrelic_plugin_agent.plugins.riak.Riak',
     'uwsgi': 'newrelic_plugin_agent.plugins.uwsgi.uWSGI'}

@@ -17,6 +17,7 @@ NewRelic platform. Currently supported backend systems are:
 - PostgreSQL
 - RabbitMQ
 - Redis
+- RethinkDB
 - Riak
 - uWSGI
 
@@ -246,6 +247,14 @@ For Redis daemons that are password protected, add the password configuration va
 
 The Redis plugin can communicate either over UNIX domain sockets using the path configuration variable or TCP/IP using the host and port variables. Do not include both.
 
+RethinkDB Installation Notes
+------------------------
+You need to install the rethinkdb driver, either by running ``pip install rethinkdb``. The RethinkDB configuration section allows for multiple rethinkdb servers. The syntax to poll multiple servers is in the example below.
+
+For non-authenticated polling, leave out the auth_key variable.
+
+The RethinkDB plugin communicates TCP/IP using the host and port variables.
+
 Riak Installation Notes
 -----------------------
 If you are monitoring Riak via a HTTPS connection you can use the ``verify_ssl_cert`` configuration value in the httpd configuration section to disable SSL certificate verification.
@@ -254,7 +263,7 @@ UWSGI Installation Notes
 ------------------------
 The UWSGI plugin can communicate either over UNIX domain sockets using the path configuration variable or TCP/IP using the host and port variables. Do not include both.
 
-Make sure you have `enabled stats server 
+Make sure you have `enabled stats server
 <http://uwsgi-docs.readthedocs.org/en/latest/StatsServer.html>`_ in your uwsgi config.
 
 Configuration Example
@@ -400,6 +409,16 @@ Configuration Example
           db_count: 16
           password: foobar
           #path: /var/run/redis/redis.sock
+
+      rethinkdb:
+        - name: localhost
+          host: 127.0.0.1
+          port: 28015
+          auth_key: foobar
+        - name: localhost_2
+          host: 127.0.0.2
+          port: 28015
+          auth_key: foobar
 
       riak:
         - name: localhost
